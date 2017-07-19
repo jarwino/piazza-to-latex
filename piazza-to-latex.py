@@ -47,7 +47,7 @@ for post in reversed(list(posts)):
     text += "\\subsection*{Note}\n"
     text += clean(post['history'][0]['content']) + "\n"
 
-f = open("document.tex", "w+")
+f = open("piazza-export-" + class_id + ".tex", "w+")
 f.write("\\documentclass[10pt]{article}\n")
 f.write("\\usepackage[utf8]{inputenc}\n")
 f.write("\\usepackage[margin=1in]{geometry}\n")
@@ -61,11 +61,11 @@ f.write("\\end{document}")
 f.close()
 os.system("pdflatex piazza-export.tex")
 if sys.platform.startswith('darwin'):
-    subprocess.call(('open', "piazza-export.pdf"))
+    subprocess.call(('open', "piazza-export-" + class_id + ".pdf"))
 elif os.name == 'nt':
-    os.startfile("piazza-export.pdf")
+    os.startfile("piazza-export-" + class_id + ".pdf")
 elif os.name == 'posix':
-    subprocess.call(('xdg-open', "piazza-export.pdf"))
+    subprocess.call(('xdg-open', "piazza-export-" + class_id + ".pdf"))
 
 
 
