@@ -10,7 +10,7 @@ def cleanhtml(raw_html):
   return cleantext
 
 def clean(str):
-  return cleanhtml(str.replace('&#43;', '+').replace('&#96;', '`').replace('\\', '\\\\').replace('&#64;', '@').replace('&amp;', '&').replace('&#34;', "''").replace('&#39;', "'").replace(u'\xa0', ' ').replace(u'\xe9', "\\'e").replace(u'\xe7', "\\c{}").replace(u'\u2013', '--').replace(u'\u2014', '---').replace(u'\u2018', '`').replace(u'\u2019', "'").replace(u'\u201c', "``").replace(u'\u201d', "''").replace('&', '\\&').replace('#', '\\#').replace('_', '\_').replace('$', '\$').replace('^', '\^{}'))
+  return cleanhtml(str.replace('&#43;', '+').replace('&#96;', '`').replace('\\', '\\\\').replace('&#64;', '@').replace('&amp;', '&').replace('&#34;', "''").replace('&#39;', "'").replace('&gt;', ">").replace('&lt;', "<").replace(u'\xa0', ' ').replace(u'\xe9', "\\'e").replace(u'\xe7', "\\c{}").replace(u'\u2013', '--').replace(u'\u2014', '---').replace(u'\u2018', '`').replace(u'\u2019', "'").replace(u'\u201c', "``").replace(u'\u201d', "''").replace('&', '\\&').replace('#', '\\#').replace('_', '\_').replace('$', '\$').replace('^', '\^{}'))
   
 p = Piazza()
 p.user_login()
