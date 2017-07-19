@@ -59,7 +59,7 @@ f.write("\\maketitle\n")
 f.write(text)
 f.write("\\end{document}")
 f.close()
-os.system("pdflatex piazza-export.tex")
+os.system("pdflatex piazza-export-" + class_id + ".pdf")
 if sys.platform.startswith('darwin'):
     subprocess.call(('open', "piazza-export-" + class_id + ".pdf"))
 elif os.name == 'nt':
