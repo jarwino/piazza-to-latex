@@ -17,8 +17,6 @@ p.user_login()
 class_id = raw_input("Enter class ID: ")
 course_piazza = p.network(class_id)
 
-print str(course_piazza.get_statistics())
-
 posts = course_piazza.iter_all_posts()
 
 text = ""
