@@ -42,11 +42,13 @@ for post in reversed(list(posts)):
           if inner_child['type'] == 'feedback':
             text += "\\subsubsection*{Feedback}\n"
             text += clean(inner_child['subject']) + "\n" 
-
+  elif 'no_answer' in post and post['no_answer'] == 1:
+    text += "\\subsection*{Question}\n"
+    text += clean(post['history'][0]['content']) + "\n"
+    text += "\\subsection*{**No Answer**}\n"
   elif clean(post['history'][0]['content']) != "":
     text += "\\subsection*{Note}\n"
     text += clean(post['history'][0]['content']) + "\n"
-
 f = open("piazza-export-" + class_id + ".tex", "w+")
 f.write("\\documentclass[10pt]{article}\n")
 f.write("\\usepackage[utf8]{inputenc}\n")
