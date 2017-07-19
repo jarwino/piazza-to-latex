@@ -1,8 +1,11 @@
 from piazza_api import Piazza
-import sys
 import time
 import re
 import subprocess, os
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf-8')
 
 def cleanhtml(raw_html):
   cleanr = re.compile('<.*?>')
@@ -10,7 +13,7 @@ def cleanhtml(raw_html):
   return cleantext
 
 def clean(str):
-  return cleanhtml(str.replace('&#43;', '+').replace('&#96;', '`').replace('\\', '\\\\').replace('&#64;', '@').replace('&amp;', '&').replace('&#34;', "''").replace('&#39;', "'").replace('&gt;', "\\textgreater{}").replace('&lt;', "\\textless{}").replace(u'\xa0', ' ').replace(u'\xe9', "\\'e").replace(u'\xe7', "\\c{}").replace(u'\u2013', '--').replace(u'\u2014', '---').replace(u'\u2018', '`').replace(u'\u2019', "'").replace(u'\u201c', "``").replace(u'\u201d', "''").replace('&', '\\&').replace('#', '\\#').replace('_', '\_').replace('$', '\$').replace('^', '\^{}'))
+  return  cleanhtml(str.replace('&#43;', '+').replace('&#96;', '`').replace('\\', '\\\\').replace('&#64;', '@').replace('&amp;', '&').replace('&#34;', "''").replace('&#39;', "'").replace('&gt;', "\\textgreater{}").replace('&lt;', "\\textless{}").replace('&', '\\&').replace('#', '\\#').replace('_', '\_').replace('$', '\$').replace('^', '\^{}'))
   
 p = Piazza()
 p.user_login()
@@ -53,6 +56,7 @@ f = open("piazza-export-" + class_id + ".tex", "w+")
 f.write("\\documentclass[10pt]{article}\n")
 f.write("\\usepackage[utf8]{inputenc}\n")
 f.write("\\usepackage[margin=1in]{geometry}\n")
+f.write("\\DeclareUnicodeCharacter{00A0}{ }")
 f.write("\\title{Piazza Export}\n")
 f.write("\\author{Class ID: " + class_id + "}\n")
 f.write("\\date{\\today}\n")
